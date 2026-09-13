@@ -1,0 +1,11 @@
+(./)gradlew clean
+
+(./)gradlew build
+
+(./)gradlew lwjgl3:run
+# or
+(./)gradlew build run
+
+(./)gradlew build jar
+# or
+(./)gradlew lwjgl3:dist
