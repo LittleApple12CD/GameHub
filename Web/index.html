@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- 主菜单 -->
+    <div id="menu" class="screen active">
+      <h1>GAME HUB</h1>
+      <ul id="game-list"></ul>
+      <button id="exit-btn" class="exit">EXIT</button>
+    </div>
+
+    <!-- 游戏容器 -->
+    <div id="game-screen" class="screen">
+      <div id="game-header">
+        <button id="back-btn"></button>
+        <span id="game-title"></span>
+      </div>
+      <canvas id="game-canvas" width="850" height="650"></canvas>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

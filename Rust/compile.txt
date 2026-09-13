@@ -1,0 +1,7 @@
+cargo run
+# or
+cargo run --release
+
+cargo build
+# or
+cargo build --release
