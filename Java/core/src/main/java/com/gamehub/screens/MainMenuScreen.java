@@ -58,7 +58,7 @@ public class MainMenuScreen implements Screen {
             titleFont = generator.generateFont(titleParam);
 
             FreeTypeFontGenerator.FreeTypeFontParameter buttonParam = new FreeTypeFontGenerator.FreeTypeFontParameter();
-            buttonParam.size = 44;
+            buttonParam.size = 38;
             buttonParam.color = Color.WHITE;
             buttonFont = generator.generateFont(buttonParam);
 
