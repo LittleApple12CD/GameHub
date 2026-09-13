@@ -1,0 +1,74 @@
+cmake -B build -G "MSYS Makefiles" -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j
+./dist/GameHub.exe
+
+# or
+
+mkdir -p dist
+windres resources.rc -o resources.o
+
+g++ -std=c++17 -O2 -Wall \
+    resources.o \
+    src/main.cpp \
+    src/Menu.cpp \
+    src/games/SnakeGame.cpp \
+    src/games/TetrisGame.cpp \
+    src/games/MinesweeperGame.cpp \
+    src/games/FlappyGame.cpp \
+    src/games/TankGame.cpp \
+    src/games/BreakoutGame.cpp \
+    src/games/TicTacToeGame.cpp \
+    -o dist/GameHub.exe \
+    -I"C:/msys64/ucrt64/include" \
+    -L"C:/msys64/ucrt64/lib" \
+    -lsfml-graphics -lsfml-window -lsfml-system \
+    -lopengl32 -lwinmm -lgdi32 \
+    -mwindows
+
+# or
+
+mkdir -p dist
+windres resources.rc -o resources.o
+
+g++ -std=c++17 -O2 -static \
+    resources.o \
+    src/main.cpp \
+    src/Menu.cpp \
+    src/games/SnakeGame.cpp \
+    src/games/TetrisGame.cpp \
+    src/games/MinesweeperGame.cpp \
+    src/games/FlappyGame.cpp \
+    src/games/TankGame.cpp \
+    src/games/BreakoutGame.cpp \
+    src/games/TicTacToeGame.cpp \
+    -o dist/GameHub.exe \
+    -I"C:/msys64/ucrt64/include" \
+    -L"C:/msys64/ucrt64/lib" \
+    -DSFML_STATIC \
+    -lsfml-graphics-s -lsfml-window-s -lsfml-system-s \
+    -lfreetype -lopengl32 -lwinmm -lgdi32 -lcomdlg32 -lole32 -luuid \
+    -static-libgcc -static-libstdc++ \
+    -mwindows
+
+ldd dist/GameHub.exe | grep '/ucrt64/bin/' | awk '{print $3}' | sort -u | xargs -I {} cp {} dist/
+# or
+cp \
+  /ucrt64/bin/libsfml-system-3.dll \
+  /ucrt64/bin/libsfml-window-3.dll \
+  /ucrt64/bin/libsfml-graphics-3.dll \
+  /ucrt64/bin/libstdc++-6.dll \
+  /ucrt64/bin/libgcc_s_seh-1.dll \
+  /ucrt64/bin/libwinpthread-1.dll \
+  /ucrt64/bin/libfreetype-6.dll \
+  /ucrt64/bin/libbrotlidec.dll \
+  /ucrt64/bin/libbrotlicommon.dll \
+  /ucrt64/bin/libbz2-1.dll \
+  /ucrt64/bin/libpng16-16.dll \
+  /ucrt64/bin/zlib1.dll \
+  /ucrt64/bin/libharfbuzz-0.dll \
+  /ucrt64/bin/libgraphite2.dll \
+  /ucrt64/bin/libglib-2.0-0.dll \
+  /ucrt64/bin/libintl-8.dll \
+  /ucrt64/bin/libpcre2-8-0.dll \
+  /ucrt64/bin/libiconv-2.dll \
+  dist/
