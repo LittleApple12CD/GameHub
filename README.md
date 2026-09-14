@@ -25,6 +25,6 @@ A mini-game hub featuring 7 classic games.  一个拥有7款经典游戏的小�
 - Go 1.21.5, SDL2
 
 # 如何游玩 How to play
-- 本地版：从[Releases](https://github.com/LittleApple12CD/GameHub/releases/lastest)下载发布包，然后解压游玩
+- 本地版：从[Releases](https://github.com/LittleApple12CD/GameHub/releases)下载发布包，然后解压游玩
 - 网页版：进入[GameHubWeb](https://littleapple12cd.github.io/GameHub/)链接游玩
 
