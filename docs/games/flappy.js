@@ -13,8 +13,8 @@ export class FlappyGame extends BaseGame {
     this.birdY = this.areaH / 2;
     this.birdVy = 0;
     this.birdR = 15;
-    this.gravity = 0.5;
-    this.jump = -8.0;
+    this.gravity = 0.6;
+    this.jump = -9.0;
     this.pipes = [];
     this.pipeW = 60;
     this.pipeGap = 170;
