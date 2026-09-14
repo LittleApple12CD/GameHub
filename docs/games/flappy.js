@@ -14,7 +14,7 @@ export class FlappyGame extends BaseGame {
     this.birdVy = 0;
     this.birdR = 15;
     this.gravity = 0.6;
-    this.jump = -9.0;
+    this.jump = -10.0;
     this.pipes = [];
     this.pipeW = 60;
     this.pipeGap = 170;
@@ -22,7 +22,7 @@ export class FlappyGame extends BaseGame {
     this.score = 0;
     this.gameOver = false;
     this.pipeTimer = 0;
-    this.pipeDelay = 100;
+    this.pipeDelay = 90;
     this.birdX = 80;
 
     this.started = false;
