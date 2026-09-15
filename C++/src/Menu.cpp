@@ -41,7 +41,7 @@ void Menu::drawMenu(sf::RenderWindow& window, int sel, bool quitSel) {
 
         sf::Text t(font, names[i], 30);
         t.setFillColor(COLOR_WHITE);
-        t.setPosition({SCREEN_WIDTH / 2.f - t.getLocalBounds().size.x / 2.f, y + 8.f});
+        t.setPosition({SCREEN_WIDTH / 2.f - t.getLocalBounds().size.x / 2.f, y + 6.f});
         window.draw(t);
     }
 
