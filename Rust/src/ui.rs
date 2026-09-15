@@ -101,7 +101,7 @@ pub fn draw_menu(registry: &[GameEntry], selected: usize, quit_selected: bool) {
             entry.name,
             SCREEN_WIDTH / 2.0,
             r.y + r.h / 2.0,
-            38,
+            32,
             COLOR_WHITE,
         );
     }
