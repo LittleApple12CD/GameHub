@@ -1,4 +1,20 @@
 use macroquad::prelude::*;
+use macroquad::text::{load_ttf_font_from_bytes, TextParams};
+use std::sync::OnceLock;
+
+static FONT: OnceLock<Font> = OnceLock::new();
+
+pub fn init_font() {
+    let bytes = include_bytes!("../assets/fonts/arial.ttf");
+    match load_ttf_font_from_bytes(bytes) {
+        Ok(f) => { let _ = FONT.set(f); }
+        Err(e) => eprintln!("Error: {e}"),
+    }
+}
+
+fn font() -> Option<&'static Font> {
+    FONT.get()
+}
 
 // ---------- 窗口尺寸 ----------
 pub const SCREEN_WIDTH: f32 = 850.0;
@@ -29,13 +45,17 @@ pub fn draw_text_centered(
     font_size: u16,
     color: Color,
 ) {
-    let dims = measure_text(text, None, font_size, 1.0);
-    draw_text(
+    let dims = measure_text(text, font(), font_size, 1.0);
+    draw_text_ex(
         text,
         center_x - dims.width / 2.0,
         center_y + dims.height / 2.0,
-        font_size as f32,
-        color,
+        TextParams {
+            font: font(),
+            font_size,
+            color,
+            ..Default::default()
+        },
     );
 }
 
