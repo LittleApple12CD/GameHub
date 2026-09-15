@@ -31,6 +31,8 @@ enum AppState {
 
 #[macroquad::main(window_conf)]
 async fn main() {
+    common::init_font();
+    
     let registry = game_registry();
     let mut state = AppState::Menu;
     let mut selected: usize = 0;
