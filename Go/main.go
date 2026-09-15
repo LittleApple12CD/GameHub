@@ -80,7 +80,7 @@ func main() {
 		defer font.Close()
 	}
 
-	fontSmall, err := ttf.OpenFont("assets/fonts/arial.ttf", 38)
+	fontSmall, err := ttf.OpenFont("assets/fonts/arial.ttf", 36)
 	if err != nil {
 		fontSmall = nil
 	}
