@@ -157,8 +157,8 @@ void TankGame::drawTank(sf::RenderTarget& t, int x, int y, sf::Color body, sf::C
 
     sf::RectangleShape g;
     if (dir.x == 1) g.setSize({14, 8});
-    else if (dir.x == -1) g.setSize({14, 8});
-    else if (dir.y == -1) g.setSize({8, 14});
+    else if (dir.x == -1) g.setSize({16, 8});
+    else if (dir.y == -1) g.setSize({8, 16});
     else g.setSize({8, 14});
     g.setFillColor(gun);
     g.setPosition({cx - g.getSize().x/2.f + dir.x * 6.f, cy - g.getSize().y/2.f + dir.y * 6.f});
