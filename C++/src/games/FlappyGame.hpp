@@ -21,7 +21,7 @@ private:
     float birdY = 0.f, birdVy = 0.f, birdRadius = 15.f;
     float gravity = 0.6f, jump = -11.f;
     std::vector<Pipe> pipes;
-    float pipeW = 60.f; int pipeGap = 160; float pipeSpeed = 3.f;
+    float pipeW = 60.f; int pipeGap = 160; float pipeSpeed = 4.f;
     int score = 0; bool gameOver = false;
     int pipeTimer = 0, pipeDelay = 90;
     sf::Font font;
