@@ -49,7 +49,7 @@ pub fn draw_text_centered(
     draw_text_ex(
         text,
         center_x - dims.width / 2.0,
-        center_y + dims.height / 2.0,
+        center_y + dims.height / 2.0 - 4.0,
         TextParams {
             font: font(),
             font_size,
