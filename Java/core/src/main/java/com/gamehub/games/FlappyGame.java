@@ -38,9 +38,9 @@ public class FlappyGame implements GameInterface {
         private static final int HITBOX_RADIUS = 11;
         private static final int PIPE_WIDTH = 60;
         private static final int PIPE_GAP = 160;
-        private static final float GRAVITY = 0.3f;
-        private static final float JUMP_FORCE = -9f;
-        private static final float PIPE_SPEED = 3f;
+        private static final float GRAVITY = 0.2f;
+        private static final float JUMP_FORCE = -7f;
+        private static final float PIPE_SPEED = 2f;
         private static final int PIPE_DELAY = 90;
 
         private float birdY;
