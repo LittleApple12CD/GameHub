@@ -36,8 +36,8 @@ public class BreakoutGame implements GameInterface {
         private static final int PADDLE_WIDTH = 120;
         private static final int PADDLE_HEIGHT = 16;
         private static final int BALL_SIZE = 20;
-        private static final float PADDLE_SPEED = 6f;
-        private static final float BALL_SPEED = 4f;
+        private static final float PADDLE_SPEED = 5f;
+        private static final float BALL_SPEED = 3f;
 
         private int offsetX, offsetY;
         private float paddleX;
