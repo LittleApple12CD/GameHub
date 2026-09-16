@@ -30,11 +30,11 @@ impl BreakoutGame {
     pub fn new() -> Self {
         let mut g = Self {
             paddle: Rect::new(0.0, 0.0, 120.0, 16.0),
-            paddle_speed: 6.0,
+            paddle_speed: 5.0,
             ball: Rect::new(0.0, 0.0, 20.0, 20.0),
             ball_dx: 5.0,
-            ball_dy: -6.0,
-            ball_speed: 4.0,
+            ball_dy: -5.0,
+            ball_speed: 3.0,
             bricks: Vec::new(),
             score: 0,
             lives: 3,
