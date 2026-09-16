@@ -1,5 +1,6 @@
 # GameHub
-A mini-game hub featuring 7 classic games.  一个拥有7款经典游戏的小游戏中心。
+A mini-game center with 7 classic games: Snake, Minesweeper, Tetris, Flappy Bird, Breakout, Tank Battle, and Tic-Tac-Toe.
+<br> 一个拥有贪吃蛇、扫雷、俄罗斯方块、飞翔的小鸟、打方块、坦克大战、井字棋共7款经典游戏的小游戏中心。
 
 - 有C++,Java,Python,Rust,Go五种语言的版本，以及Web网页版。
 - It comes in versions for five languages — C++, Java, Python, Rust, and Go — as well as a web version.
