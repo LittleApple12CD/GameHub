@@ -34,11 +34,11 @@ type GameInfo struct {
 }
 
 var gameList = []GameInfo{
-	{"Snake", func(r *sdl.Renderer) games.Game { return games.NewSnakeGame(r) }, nil},
-	{"Tetris", func(r *sdl.Renderer) games.Game { return games.NewTetrisGame(r) }, nil},
+	{"SnakeGame", func(r *sdl.Renderer) games.Game { return games.NewSnakeGame(r) }, nil},
+	{"TetrisGame", func(r *sdl.Renderer) games.Game { return games.NewTetrisGame(r) }, nil},
 	{"Minesweeper", func(r *sdl.Renderer) games.Game { return games.NewMinesweeperGame(r) }, nil},
 	{"Flappy Bird", func(r *sdl.Renderer) games.Game { return games.NewFlappyGame(r) }, nil},
-	{"Tank", func(r *sdl.Renderer) games.Game { return games.NewTankGame(r) }, nil},
+	{"TankBattle", func(r *sdl.Renderer) games.Game { return games.NewTankGame(r) }, nil},
 	{"Breakout", func(r *sdl.Renderer) games.Game { return games.NewBreakoutGame(r) }, nil},
 	{"Tic Tac Toe", func(r *sdl.Renderer) games.Game { return games.NewTicTacToeGame(r) }, nil},
 }
