@@ -7,11 +7,11 @@ import { BreakoutGame } from './games/breakout.js';
 import { TicTacToeGame } from './games/tictactoe.js';
 
 const GAMES = [
-  { name: 'Snake',         cls: SnakeGame },
-  { name: 'Tetris',        cls: TetrisGame },
+  { name: 'SnakeGame',         cls: SnakeGame },
+  { name: 'TetrisGame',        cls: TetrisGame },
   { name: 'Minesweeper',   cls: MinesweeperGame },
   { name: 'Flappy Bird',   cls: FlappyGame },
-  { name: 'Tank',          cls: TankGame },
+  { name: 'TankBattle',          cls: TankGame },
   { name: 'Breakout',      cls: BreakoutGame },
   { name: 'Tic Tac Toe',   cls: TicTacToeGame },
 ];
@@ -58,19 +58,19 @@ function exitApp() {
         min-height:100vh; background:#0f0f17; color:#fff;
         font-family:'Segoe UI',sans-serif; gap:16px;">
         <h1 style="font-size:42px; color:#50c8ff; letter-spacing:4px;">GAME HUB</h1>
-        <p style="font-size:20px; color:#aaa;">已退出，感谢游玩！</p>
-        <p style="font-size:14px; color:#666;">你可以直接关闭这个标签页。</p>
+        <p style="font-size:20px; color:#aaa;">Game exited. Thanks for playing!</p>
+        <p style="font-size:14px; color:#666;">You can close this tab now.</p>
         <button onclick="location.reload()" style="
           margin-top:12px; padding:10px 30px; font-size:16px;
           background:#50c8ff; color:#0f0f17; border:none;
-          border-radius:10px; cursor:pointer;">重新开始</button>
+          border-radius:10px; cursor:pointer;">Restart</button>
       </div>
     `;
   }, 100);
 }
 
 function confirmExit() {
-  return confirm('确定要退出 Game Hub 吗？');
+  return confirm('Are you sure you want to quit Game Hub?');
 }
 
 function backToMenu() {
