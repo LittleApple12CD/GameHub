@@ -43,7 +43,7 @@ func NewBreakoutGame(renderer *sdl.Renderer) *BreakoutGame {
 		renderer:  renderer,
 		width:     600,
 		height:    600,
-		paddleSpd: 8,
+		paddleSpd: 9,
 		ballSpeed: 6,
 	}
 	winW, winH, _ := renderer.GetOutputSize()
