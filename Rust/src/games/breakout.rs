@@ -32,9 +32,9 @@ impl BreakoutGame {
             paddle: Rect::new(0.0, 0.0, 120.0, 16.0),
             paddle_speed: 5.0,
             ball: Rect::new(0.0, 0.0, 20.0, 20.0),
-            ball_dx: 5.0,
-            ball_dy: -5.0,
-            ball_speed: 3.0,
+            ball_dx: 4.0,
+            ball_dy: -4.0,
+            ball_speed: 4.0,
             bricks: Vec::new(),
             score: 0,
             lives: 3,
@@ -46,11 +46,30 @@ impl BreakoutGame {
         g
     }
 
+    fn normalize_speed(&mut self) {
+        let target = self.ball_speed;
+        let current = (self.ball_dx * self.ball_dx + self.ball_dy * self.ball_dy).sqrt();
+        if current == 0.0 { return; }
+        let scale = target / current;
+        self.ball_dx *= scale;
+        self.ball_dy *= scale;
+    }
+
+    fn reset_ball(&mut self) {
+        self.ball.x = W / 2.0 - 10.0;
+        self.ball.y = H - 70.0;
+        let mut rng = ::rand::thread_rng();
+        self.ball_dx = if rng.gen_bool(0.5) { 1.0 } else { -1.0 };
+        self.ball_dy = -1.0;
+        self.normalize_speed();
+    }
+
     fn reset(&mut self) {
         self.paddle = Rect::new(W / 2.0 - 60.0, H - 40.0, 120.0, 16.0);
         self.ball = Rect::new(W / 2.0 - 10.0, H - 70.0, 20.0, 20.0);
-        self.ball_dx = 5.0;
-        self.ball_dy = -6.0;
+        self.ball_dx = 4.0;
+        self.ball_dy = -4.0;
+        self.normalize_speed();
         self.score = 0;
         self.lives = 3;
         self.game_over = false;
@@ -126,12 +145,7 @@ impl Game for BreakoutGame {
                 self.game_over = true;
             } else {
                 self.waiting = true;
-                self.ball.x = W / 2.0 - 10.0;
-                self.ball.y = H - 70.0;
-                let mut rng = ::rand::thread_rng();
-                let sign = if rng.gen_bool(0.5) { 1.0 } else { -1.0 };
-                self.ball_dx = self.ball_speed * sign;
-                self.ball_dy = -self.ball_speed;
+                self.reset_ball();
             }
             return true;
         }
@@ -139,6 +153,7 @@ impl Game for BreakoutGame {
         // 挡板碰撞
         if self.ball.overlaps(&self.paddle) {
             self.ball_dy = -self.ball_dy.abs();
+            self.ball.y = self.paddle.y - self.ball.h;
             let hit_pos = (self.ball.x + self.ball.w / 2.0
                 - (self.paddle.x + self.paddle.w / 2.0))
                 / (self.paddle.w / 2.0);
@@ -146,6 +161,7 @@ impl Game for BreakoutGame {
             if self.ball_dx.abs() < 1.5 {
                 self.ball_dx = if self.ball_dx >= 0.0 { 3.0 } else { -3.0 };
             }
+            self.normalize_speed();
         }
 
         // 砖块碰撞
@@ -166,12 +182,21 @@ impl Game for BreakoutGame {
                     .min(overlap_bottom)
                     .min(overlap_left)
                     .min(overlap_right);
-
-                if min_overlap == overlap_top || min_overlap == overlap_bottom {
-                    self.ball_dy = -self.ball_dy;
+                if min_overlap == overlap_top {
+                    self.ball.y = br.y - self.ball.h;
+                    self.ball_dy = -self.ball_dy.abs();
+                } else if min_overlap == overlap_bottom {
+                    self.ball.y = br.y + br.h;
+                    self.ball_dy = self.ball_dy.abs();
+                } else if min_overlap == overlap_left {
+                    self.ball.x = br.x - self.ball.w;
+                    self.ball_dx = -self.ball_dx.abs();
                 } else {
-                    self.ball_dx = -self.ball_dx;
+                    self.ball.x = br.x + br.w;
+                    self.ball_dx = self.ball_dx.abs();
                 }
+
+                self.normalize_speed();
                 break;
             }
         }
