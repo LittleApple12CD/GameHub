@@ -35,11 +35,11 @@ COLOR_QUIT = (200, 50, 50)
 COLOR_QUIT_HOVER = (255, 80, 80)
 
 games = [
-    ("Snake", SnakeGame),
-    ("Tetris", TetrisGame),
+    ("SnakeGame", SnakeGame),
+    ("TetrisGame", TetrisGame),
     ("Minesweeper", MinesweeperGame),
     ("Flappy Bird", FlappyGame),
-    ("Tank", TankGame),
+    ("TankBattle", TankGame),
     ("Breakout", BreakoutGame),
     ("Tic Tac Toe", TicTacToeGame)
 ]
