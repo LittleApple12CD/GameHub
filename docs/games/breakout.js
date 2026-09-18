@@ -13,8 +13,9 @@ export class BreakoutGame extends BaseGame {
     this.paddleSpeed = 7;
     this.ball = { x: this.areaSize / 2 - 10, y: this.areaSize - 70, w: 20, h: 20 };
     this.ballSpeed = 9;
-    this.ballDx = 4;
-    this.ballDy = -4;
+    this.ballDx = 1;
+    this.ballDy = -1;
+    this.normalizeSpeed();
     this.bricks = [];
     this.score = 0;
     this.lives = 3;
@@ -52,6 +53,14 @@ export class BreakoutGame extends BaseGame {
     this.ballDy *= scale;
   }
 
+  resetBall() {
+    this.ball.x = this.areaSize / 2 - 10;
+    this.ball.y = this.areaSize - 70;
+    this.ballDx = Math.random() < 0.5 ? 1 : -1;
+    this.ballDy = -1;
+    this.normalizeSpeed();
+  }
+
   update(dt) {
     if (this.gameOver || this.waiting) return;
     const f = dt / 16.67;
@@ -65,17 +74,16 @@ export class BreakoutGame extends BaseGame {
     this.ball.y += this.ballDy * f;
 
     if (this.ball.x <= 0 || this.ball.x + this.ball.w >= this.areaSize) this.ballDx *= -1;
+    // 顶部反弹
     if (this.ball.y <= 0) this.ballDy *= -1;
 
     if (this.ball.y + this.ball.h >= this.areaSize) {
       this.lives--;
-      if (this.lives <= 0) { this.gameOver = true; }
-      else {
+      if (this.lives <= 0) {
+        this.gameOver = true;
+      } else {
         this.waiting = true;
-        this.ball.x = this.areaSize / 2 - 10;
-        this.ball.y = this.areaSize - 70;
-        this.ballDx = this.ballSpeed * (Math.random() < 0.5 ? 1 : -1);
-        this.ballDy = -this.ballSpeed;
+        this.resetBall();
       }
       return;
     }
@@ -85,6 +93,7 @@ export class BreakoutGame extends BaseGame {
       const hit = (this.ball.x + this.ball.w / 2 - (this.paddle.x + this.paddle.w / 2)) / (this.paddle.w / 2);
       this.ballDx = hit * this.ballSpeed * 0.9;
       if (Math.abs(this.ballDx) < 1.2) this.ballDx = this.ballDx >= 0 ? 1.8 : -1.8;
+      this.ball.y = this.paddle.y - this.ball.h;
       this.normalizeSpeed();
     }
 
@@ -93,13 +102,27 @@ export class BreakoutGame extends BaseGame {
       if (this.rectCollide(this.ball, b)) {
         b.alive = false;
         this.score += 10;
+
         const overlapTop = this.ball.y + this.ball.h - b.y;
         const overlapBottom = b.y + b.h - this.ball.y;
         const overlapLeft = this.ball.x + this.ball.w - b.x;
         const overlapRight = b.x + b.w - this.ball.x;
         const minOv = Math.min(overlapTop, overlapBottom, overlapLeft, overlapRight);
-        if (minOv === overlapTop || minOv === overlapBottom) this.ballDy *= -1;
-        else this.ballDx *= -1;
+
+        if (minOv === overlapTop) {
+          this.ball.y = b.y - this.ball.h;
+          this.ballDy = -Math.abs(this.ballDy);
+        } else if (minOv === overlapBottom) {
+          this.ball.y = b.y + b.h;
+          this.ballDy = Math.abs(this.ballDy);
+        } else if (minOv === overlapLeft) {
+          this.ball.x = b.x - this.ball.w;
+          this.ballDx = -Math.abs(this.ballDx);
+        } else {
+          this.ball.x = b.x + b.w;
+          this.ballDx = Math.abs(this.ballDx);
+        }
+
         this.normalizeSpeed();
         break;
       }
@@ -135,6 +158,7 @@ export class BreakoutGame extends BaseGame {
           this.ball.w / 2, 0, Math.PI * 2);
     c.fill();
 
+    // HUD
     this.drawText(`Score: ${this.score}`, ox + 10, oy + 10, { size: 22 });
     this.drawText(`Lives: ${this.lives}`, ox + areaSize - 120, oy + 10, { size: 22 });
 
