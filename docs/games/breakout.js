@@ -12,7 +12,7 @@ export class BreakoutGame extends BaseGame {
     this.paddle = { x: this.areaSize / 2 - 60, y: this.areaSize - 40, w: 120, h: 16 };
     this.paddleSpeed = 7;
     this.ball = { x: this.areaSize / 2 - 10, y: this.areaSize - 70, w: 20, h: 20 };
-    this.ballSpeed = 8;
+    this.ballSpeed = 9;
     this.ballDx = 4;
     this.ballDy = -4;
     this.bricks = [];
@@ -41,6 +41,15 @@ export class BreakoutGame extends BaseGame {
   onKeyDown(e) {
     if (e.key.toLowerCase() === 'r') { this.reset(); return; }
     if (e.key === ' ' && this.waiting && !this.gameOver) this.waiting = false;
+  }
+
+  normalizeSpeed() {
+    const target = this.ballSpeed;
+    const current = Math.hypot(this.ballDx, this.ballDy);
+    if (current === 0) return;
+    const scale = target / current;
+    this.ballDx *= scale;
+    this.ballDy *= scale;
   }
 
   update(dt) {
@@ -76,6 +85,7 @@ export class BreakoutGame extends BaseGame {
       const hit = (this.ball.x + this.ball.w / 2 - (this.paddle.x + this.paddle.w / 2)) / (this.paddle.w / 2);
       this.ballDx = hit * this.ballSpeed * 0.9;
       if (Math.abs(this.ballDx) < 1.2) this.ballDx = this.ballDx >= 0 ? 1.8 : -1.8;
+      this.normalizeSpeed();
     }
 
     for (const b of this.bricks) {
@@ -90,6 +100,7 @@ export class BreakoutGame extends BaseGame {
         const minOv = Math.min(overlapTop, overlapBottom, overlapLeft, overlapRight);
         if (minOv === overlapTop || minOv === overlapBottom) this.ballDy *= -1;
         else this.ballDx *= -1;
+        this.normalizeSpeed();
         break;
       }
     }
