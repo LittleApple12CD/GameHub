@@ -14,11 +14,11 @@ struct GameEntry {
 
 fn game_registry() -> Vec<GameEntry> {
     vec![
-        GameEntry { name: "Snake",        make: || Box::new(games::snake::SnakeGame::new()) },
-        GameEntry { name: "Tetris",       make: || Box::new(games::tetris::TetrisGame::new()) },
+        GameEntry { name: "SnakeGame",        make: || Box::new(games::snake::SnakeGame::new()) },
+        GameEntry { name: "TetrisGame",       make: || Box::new(games::tetris::TetrisGame::new()) },
         GameEntry { name: "Minesweeper",  make: || Box::new(games::minesweeper::MinesweeperGame::new()) },
         GameEntry { name: "Flappy Bird",  make: || Box::new(games::flappy::FlappyGame::new()) },
-        GameEntry { name: "Tank",         make: || Box::new(games::tank::TankGame::new()) },
+        GameEntry { name: "TankBattle",         make: || Box::new(games::tank::TankGame::new()) },
         GameEntry { name: "Breakout",     make: || Box::new(games::breakout::BreakoutGame::new()) },
         GameEntry { name: "Tic Tac Toe",  make: || Box::new(games::tic_tac_toe::TicTacToeGame::new()) },
     ]
