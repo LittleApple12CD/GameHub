@@ -18,7 +18,7 @@ private:
 
     sf::FloatRect paddle;
     sf::Vector2f ballPos, ballDir;
-    float ballSize = 20.f, ballSpeed = 6.f, paddleSpeed = 8.f;
+    float ballSize = 20.f, ballSpeed = 6.f, paddleSpeed = 9.f;
     std::vector<Brick> bricks;
     int score = 0, lives = 3;
     bool gameOver = false, waiting = true;
