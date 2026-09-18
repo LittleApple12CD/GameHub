@@ -12,8 +12,8 @@ Menu::Menu() {
     if (!font.openFromFile("assets/fonts/arial.ttf"))
         std::cerr << "Warning: font not found\n";
 
-    names = {"Snake", "Tetris", "Minesweeper", "Flappy Bird",
-             "Tank", "Breakout", "Tic Tac Toe"};
+    names = {"SnakeGame", "TetrisGame", "Minesweeper", "Flappy Bird",
+             "TankBattle", "Breakout", "Tic Tac Toe"};
     factories = {
         [] { return std::make_unique<SnakeGame>(); },
         [] { return std::make_unique<TetrisGame>(); },
