@@ -10,7 +10,7 @@ export class BreakoutGame extends BaseGame {
 
   reset() {
     this.paddle = { x: this.areaSize / 2 - 60, y: this.areaSize - 40, w: 120, h: 16 };
-    this.paddleSpeed = 7;
+    this.paddleSpeed = 8;
     this.ball = { x: this.areaSize / 2 - 10, y: this.areaSize - 70, w: 20, h: 20 };
     this.ballSpeed = 8;
     this.ballDx = 1;
