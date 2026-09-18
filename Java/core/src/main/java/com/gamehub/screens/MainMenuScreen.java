@@ -27,8 +27,8 @@ public class MainMenuScreen implements Screen {
     private BitmapFont buttonFont;
 
     private final String[] gameNames = {
-        "Snake", "Tetris", "Minesweeper",
-        "Flappy Bird", "Tank", "Breakout", "Tic Tac Toe"
+        "SnakeGame", "TetrisGame", "Minesweeper",
+        "Flappy Bird", "TankBattle", "Breakout", "Tic Tac Toe"
     };
 
     private final Class<?>[] gameClasses = {
