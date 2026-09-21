@@ -24,6 +24,14 @@ A mini-game center with 7 classic games: Snake, Minesweeper, Tetris, Flappy Bird
 
 - Go:
 - Go 1.21.5, SDL2
+<br>
+
+- Flash:
+- Adobe Flash Proessional CS6
+<br>
+
+- HTML:
+- Browser, Python 3.12
 
 # 如何游玩 How to play
 - 本地版：从[Releases](https://github.com/LittleApple12CD/GameHub/releases)下载发布包，然后解压游玩
