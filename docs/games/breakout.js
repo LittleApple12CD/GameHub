@@ -93,7 +93,6 @@ export class BreakoutGame extends BaseGame {
       const hit = (this.ball.x + this.ball.w / 2 - (this.paddle.x + this.paddle.w / 2)) / (this.paddle.w / 2);
       this.ballDx = hit * this.ballSpeed * 0.9;
       if (Math.abs(this.ballDx) < 1.2) this.ballDx = this.ballDx >= 0 ? 1.8 : -1.8;
-      this.ball.y = this.paddle.y - this.ball.h;
       this.normalizeSpeed();
     }
 
