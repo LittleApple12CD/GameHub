@@ -27,7 +27,7 @@ A mini-game center with 7 classic games: Snake, Minesweeper, Tetris, Flappy Bird
 <br>
 
 - Flash:
-- Adobe Flash Proessional CS6, Adobe Flash Player 11
+- Adobe Flash Proessional CS6, Adobe Flash Player 11 / Ruffle
 <br>
 
 - HTML:
