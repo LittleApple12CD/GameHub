@@ -153,7 +153,6 @@ impl Game for BreakoutGame {
         // 挡板碰撞
         if self.ball.overlaps(&self.paddle) {
             self.ball_dy = -self.ball_dy.abs();
-            self.ball.y = self.paddle.y - self.ball.h;
             let hit_pos = (self.ball.x + self.ball.w / 2.0
                 - (self.paddle.x + self.paddle.w / 2.0))
                 / (self.paddle.w / 2.0);
