@@ -106,7 +106,6 @@ package games {
                 var hit:Number = (ball.x + ball.w / 2 - (paddle.x + paddle.w / 2)) / (paddle.w / 2);
                 ballDx = hit * ballSpeed * 0.9;
                 if (Math.abs(ballDx) < 1.2) ballDx = ballDx >= 0 ? 1.8 : -1.8;
-                ball.y = paddle.y - ball.h;
                 normalizeSpeed();
             }
 
