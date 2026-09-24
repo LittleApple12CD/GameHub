@@ -1,0 +1,21 @@
+go mod init gamehub
+go get github.com/akavel/rsrc
+go install github.com/akavel/rsrc@latest
+go get github.com/hajimehoshi/ebiten/v2
+go get golang.org/x/image
+go mod tidy
+
+rsrc -ico icon.ico -o icon.syso
+
+go run .
+
+go build -o dist/GameHub.exe .
+# or
+go build -ldflags="-H windowsgui" -o dist/GameHub.exe .
+# or
+go build -o dist/GameHub .
+
+# Windows,Linux,macOS
+GOOS=windows GOARCH=amd64 go build -o dist/GameHub.exe .
+GOOS=linux   GOARCH=amd64 go build -o dist/GameHub .
+GOOS=darwin  GOARCH=amd64 go build -o dist/GameHub .
