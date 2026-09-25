@@ -144,7 +144,7 @@ export class BreakoutGame extends BaseGame {
 
     for (const b of this.bricks) {
       if (!b.alive) continue;
-      this.roundRect(ox + b.x, oy + b.y, b.w, b.h, 8, b.color, '#ffffff');
+      this.roundRect(ox + b.x, oy + b.y, b.w, b.h, 6, b.color, '#ffffff');
     }
 
     this.roundRect(ox + this.paddle.x, oy + this.paddle.y,
